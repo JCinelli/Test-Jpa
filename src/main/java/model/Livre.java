@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,9 @@ public class Livre {
 
 	@Column (name = "AUTEUR", length = 50, nullable = false)
 	private String auteur;
+	
+	@ManyToMany ( mappedBy = "livres")
+	private Set<Emprunt> emprunts;
 
 	
 //	CONSTRUCTORS
@@ -34,7 +40,7 @@ public class Livre {
 //	METHODS
 	@Override
 	public String toString() {
-		return "Id : " + id + "\rTitre : " + titre + "\rAuteur : " + auteur;
+		return "Livre : \r Id : " + id + "\r Titre : " + titre + "\r Auteur : " + auteur;
 	}
 
 	
